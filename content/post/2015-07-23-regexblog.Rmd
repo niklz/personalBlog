@@ -1,0 +1,129 @@
+---
+title: "Dr. PatternMatch or: How I Learned to Stop Worrying and Love Regular Expressions"
+author: "Nick Howlett"
+date: 2015-07-23
+categories: ["R"]
+tags: ["Regular Expressions"]
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+##INTRODUCTION
+
+In my discussions with other data-scientists about their usage of Regular Expressions  (RegEx for short) I have found that a large number adopt the search stack-overflow for the right one methodology. It's understandable: RegEx syntax is finicky and theres a knowledge threshold which takes effort to break through before the investment in RegEx starts pay off. Theres an infamous quote/joke on the topic:
+
+> Some people, when confronted with a problem, think 
+“I know, I'll use regular expressions.”   Now they have two problems.
+
+Without picking apart a joke too much I prefer to see it as: 
+
+> Some people, when confronted with a problem, think 
+“I know, I'll use regular expressions.”   Now they have a problem and a puzzle.
+
+Puzzles are more fun than problems, right? I genuinely enjoy it when I have a need to use Regular Expressions in my work. Theres a sense of expression (excuse the pun) in writing the right RegEx for the job. 
+
+Its useful to think of RegEx as an engine that you can bolt onto the workflow you already employ. Different platforms interact differently with the engine and also have their own syntax. In the introduction I shall keep the syntax environment-agnostic but later I will be giving examples in the R environment and hence will discuss the R flavour of RegEx. 
+
+For the sake of brevity this post this post aims to give only a basics (and not exhaustive) introduction to Regular Expressions: covering the most important concepts. Along the way we'll look at some fun use-cases and hopefully some readers will be inspired to use them in their own text-processing workflows. Lets dive in.
+
+## THE BASIS FOR REGULAR EXPRESSIONS 
+
+Humans are adept at noticing patterns in many walks of life with text strings being no exception. For instance the telephone numbers 
+
+* 01632123456
+* 01632 123456
+* \(0163)  212 3456 
+* \(01632) 123-456
+
+read by a human are all easily parsed and understood to be the same number. However to a computer these strings are all unique. Imagine a scenario in which we are asked to process a stack of emails containing phone numbers with no standardised format. Wouldnt it be great if a computer, which can parse the text much faster than a human, could *see* the numbers the same way we do - as a pattern.  
+
+RegEx formalise the concept of a text pattern. Using RegEx in a data-wrangling workflow is very powerful as pattern detection, extraction, and replacement are common tasks a data scientist will be faced with.
+
+### The Anatomy of a Pattern
+
+Before looking at how to express string-patterns in RegEx lets cover what a pattern is. Patterns are small pieces of strings and strings are ordered sequences of characters:
+
+
+# PUT FIGURE 'ERE
+
+
+As far as a computers are concerned all characters are unique and are not categorised into larger groups or classes. Whereas when humans parse strings the characters tend to have classes; numbers are different to letters, punctuation is different to alphanumerics, whitespace and formatting characters are different to all the above.
+
+
+If we consider these character groups to be atoms then examples of molecules might be:
+
+* Words : collections of letters, no numbers, no white-space, restricted punctuation (``).
+* Numbers : collections of numbers, no letters, no white-space, restricted punctuation (`,` or `.`).
+* Telephone Numbers : collections of numbers, no letters, no white-space, restricted punctuation (`,`, `+`, `(`, `)`, `-`, `.`).
+* Web URL: collections of letters, numbers, restricted punctuation (`$`, `-`, `_`, `.`, `+`, `!`, `*`, `'`, `(`, `)`, `,`, `\`, `?`), no whitespace.
+
+
+This may seem remedial but the first step to forming good RegEx is to understand the restrictions to the molecules you are attempting to match: notice in the examples I was strict enough to not only list the allowed characters but also the disallowed characters.
+
+### RegEx 101
+
+Lets cover how RegEx defines and matches patterns. This section is very bookwork-y however its important so please bare with it - itll be worth it! 
+
+A regular expression is itself a string. The RegEx string is comprised of two component characters: literal and metacharacters. Literal characters represent literally the character the RegEx aims to match: `a` matches `a`.
+
+Metacharacters have special meanings which enrich the pattern. Typically a metacharacter changes the meaning of the previous or next character (or pattern chunk) in the RegEx. Metacharacters can and often do apply to other metacharacters. Broadly, metacharacters are used for four pattern matching tasks.
+
+1. Character Classes
+2. Quantifiers
+3. Alternation
+4. Anchors
+
+#### Character Classes
+
+
+Previously we touched on the concept of character classes as the atoms of larger patterns. RegEx has some built in character classes plus the ability to define custom classes. The broadest character class is invoked via the wildcard metacharacter, `.`, which matches anything, literally **anything**.  This is useful for many reasons but usually within the context of more complicated patterns involving other metacharacters which havent been covered yet, well see more of `.` later. 
+
+Two useful character classes are those for whitespace and digits, which are `\s` and `\d` respectively. Meaning `\d` will match any single digit 0-9 and `\s` will match a single space or tab character. 
+
+
+RegEx also allows you to express custom character classes using square brackets. Characters inside the square brackets will be matched. Also ranges can be defined with a hyphen. For instance `[0-9a-f][0-9a-f]` will match any double digit hexadecimal number. A negated character class can also be defined by starting the class inside the brackets with a carat symbol `^`. So `[^1-3]` reads `match any character other than 1, 2, or 3’.
+
+
+#### Quantifiers
+
+Quantifiers allow the RegEx to match on differing numbers of a chunk of a pattern. The metacharacters used for this are shown in the following table.
+
+
+|Metacharacter |         Meaning           |
+|:------------:|---------------------------|
+|      *       |0 or more of preceding item|
+|      +       |1 or more of preceding item|
+|      ?       |0 or 1 of preceding item   |
+|    {n,m}     |n to m of preceding item   |
+
+
+
+The `?` quantifier can be thought of intuitively as “match this pattern with or without this item”, for instance if you wished to match both the words `colour` and `color` the RegEx `colou?r` would do this. 
+
+An instance where the `+` metacharacter would be useful is in a pattern-replacement workflow to catch multiple space characters and replace with a single space. The pattern `\s+` would match one or more whitespace characters in a row allowing you to replace them all with a single space. 
+
+The curly brackets allow for custom quantifiers: above I showed the RegEx `[0-9a-f][0-9a-f]` to match two digit hexadecimal numbers. This has an obvious duplication issue and could be re-written more succinctly with quantifiers as: `[0-9a-f]{2}`. Notice that I dont have to supply both an upper and lower limit as shown in the table. Also, adding a comma before or after the 2 without giving another value would change the meaning again to match from 0 to 2 and match from 2 to infinity respectively. 
+
+
+#### Alternation
+
+Alternation allows the RegEx to match on multiple subexpressions and the metacharacter used for this is the pipe `|`. For instance the RegEx `this|that` would match either `this` or `that`. The pipe reaches out to the nearest grouping and groupings can be defined with parentheses. So the previous RegEx is equivalently written as `th(is|at)` where now the pattern reads 'match `th` followed by either `is` or `at`'. 
+
+Most patterns can be written in multiple ways and personal style starts to come into play. Usually the shorter the expression the harder it can be to understand what it is matching (not that that stops people competing in RegEx golf of course), I tend to go for a compromise between total RegEx length and readability.
+
+Parentheses were used above to denote a grouping which is one purpose of them, but they also allow for capturing. Capturing is a construct in RegEx where patterns set inside parentheses are matched and those matches are captured to be recalled later. Well cover more in depth later.
+
+#### Anchors
+
+So far we have looked at simple examples where the pattern matches the whole string. Recall in the diagram above that patterns in general sit somewhere along a longer string. RegEx has metacharacters called anchors which force the pattern to match between a place in the string.
+
+Depending on how the RegEx engine is being invoked this has a variety of uses. There's a so-called option for RegEx engines called global which means that the pattern *slides* over the whole string and can return either `TRUE/FALSE` for match or not. If preffered the engine could also return the character locations for each match. In this scenario it becomes more important that the RegEx care about anchoring. For instance our Regex above for `this` or `that` would also match on `unsympathised` and all other words which contain `this` or `that`.
+
+To fix the above we can anchor to the start and end of the entire string with `^` and `$`. So, Modifying the RegEx above to `^th(is|at)$` would now match only the full strings `this` or `that`. At this stage hopefully some of you are asking 'hey, isn't `^` already used for negated character classes?' - and you'd be right. Somewhat confusingly metacharacters have multiple contextual meanings in RegEx and this one of them.
+
+The other important anchor is the would boundary anchor `\b`. This makes it easier to do per-word style matching on long strings. For instance the RegEx `\bat\b` will match (with the global option on) on the string `the shop closed at 9pm` but not `the cat sat on the matt` 
+
+
+#### The Great Escape

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Regular Expressions on A Hugo website</title>
+    <link>/tags/regular-expressions/</link>
+    <description>Recent content in Regular Expressions on A Hugo website</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 23 Jul 2015 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/regular-expressions/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Dr. PatternMatch or: How I Learned to Stop Worrying and Love Regular Expressions</title>
+      <link>/2015/07/23/dr.-patternmatch-or-how-i-learned-to-stop-worrying-and-love-regular-expressions/</link>
+      <pubDate>Thu, 23 Jul 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/2015/07/23/dr.-patternmatch-or-how-i-learned-to-stop-worrying-and-love-regular-expressions/</guid>
+      <description>INTRODUCTIONIn my discussions with other data-scientists about their usage of Regular Expressions (RegEx for short) I have found that a large number adopt the search stack-overflow for the right one methodology. It’s understandable: RegEx syntax is finicky and theres a knowledge threshold which takes effort to break through before the investment in RegEx starts pay off. Theres an infamous quote/joke on the topic:
+Some people, when confronted with a problem, think “I know, I’ll use regular expressions.</description>
+    </item>
+    
+  </channel>
+</rss>

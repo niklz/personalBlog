@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta name="generator" content="Hugo 0.26" />
+    <base href="/">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <title>A Hugo website </title>
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="canonical" href="/">
+    
+    <link href="/index.xml" rel="alternate" type="application/rss+xml" title="A Hugo website" />
+    
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+</head>
+
+<body>
+    <div class="navbar">
+        <ul>
+            <li><a href="/">HOME</a></li>
+            <li><a href="/categories">CATEGORIES</a></li>
+            <li><a href="/project">PROJECTS</a></li>
+        </ul>
+    </div>
+    <div class="container">
+      <div class="title">
+        <div>
+          <a href="/">
+            <img src="/images/logo.png" />
+          </a>
+        </div>
+        <div><img src="/images/seperator.png" /></div>
+        <div class="logo-title">hello, world!</div>
+      </div>
+
+
+  <a href="/2016/12/30/a-plain-markdown-post/">
+  <div class="post-title">
+    <img src="/images/post-title-icon.png" />
+    <div class="post-meta">
+      <time>30 Dec 2016, 21:49</time>
+      <h1>A Plain Markdown Post</h1>
+    </div>
+  </div>
+</a>
+
+<div class="post-toc">
+  <span class="title">
+    Table of contents
+  </span>
+  
+</div>
+
+<section class="post-content">
+  <p>This is a post written in plain Markdown (<code>*.md</code>) instead of R Markdown (<code>*.Rmd</code>). The major differences are:</p>
+
+<ol>
+<li>You cannot run any R code in a plain Markdown document, whereas in an R Markdown document, you can embed R code chunks (<code>```{r}</code>);</li>
+<li>A plain Markdown post is rendered through <a href="https://gohugo.io/overview/configuration/">Blackfriday</a>, and an R Markdown document is compiled by <a href="http://rmarkdown.rstudio.com"><strong>rmarkdown</strong></a> and <a href="http://pandoc.org">Pandoc</a>.</li>
+</ol>
+
+<p>There are many differences in syntax between Blackfriday&rsquo;s Markdown and Pandoc&rsquo;s Markdown. For example, you can write a task list with Blackfriday but not with Pandoc:</p>
+
+<ul class="task-list">
+<li><input type="checkbox" checked disabled class="task-list-item"> Write an R package.</li>
+<li><input type="checkbox" disabled class="task-list-item"> Write a book.</li>
+<li><input type="checkbox" disabled class="task-list-item"> &hellip;</li>
+<li><input type="checkbox" disabled class="task-list-item"> Profit!</li>
+</ul>
+
+<p>Similarly, Blackfriday does not support LaTeX math and Pandoc does. I have added the MathJax support to this theme (<a href="https://github.com/yihui/hugo-lithium-theme">hugo-lithium-theme</a>) but there is a caveat for plain Markdown posts: you have to include math expressions in a pair of backticks (inline: <code>`$ $`</code>; display style: <code>`$$ $$`</code>), e.g., <code>$S_n = \sum_{i=1}^n X_i$</code>.<sup class="footnote-ref" id="fnref:This-is-because"><a rel="footnote" href="#fn:This-is-because">1</a></sup> For R Markdown posts, you do not need the backticks, because Pandoc can identify and process math expressions.</p>
+
+<p>When creating a new post, you have to decide whether the post format is Markdown or R Markdown, and this can be done via the <code>ext</code> argument of the function <code>blogdown::new_post()</code>, e.g.</p>
+
+<pre><code class="language-r">blogdown::new_post(&quot;Post Title&quot;, ext = '.Rmd')
+</code></pre>
+<div class="footnotes">
+
+<hr />
+
+<ol>
+<li id="fn:This-is-because">This is because we have to protect the math expressions from being interpreted as Markdown. You may not need the backticks if your math expression does not contain any special Markdown syntax such as underscores or asterisks, but it is always a safer choice to use backticks. When you happen to have a pair of literal dollar signs inside the same element, you can escape one dollar sign, e.g., <code>\$50 and $100</code> renders &ldquo;\$50 and $100&rdquo;. <a class="footnote-return" href="#fnref:This-is-because"><sup>[return]</sup></a></li>
+</ol>
+</div>
+
+</section>
+
+<div class="share">
+  <a href="http://www.facebook.com/sharer.php?src=bm&u=%2f2016%2f12%2f30%2fa-plain-markdown-post%2f&t=A%20Plain%20Markdown%20Post" onclick="window.open(this.href, 'PCwindow', 'width=550, height=350, menubar=no, toolbar=no, scrollbars=yes'); return false;"><i class="fa fa-facebook"></i></a>
+  <a href="http://twitter.com/intent/tweet?url=%2f2016%2f12%2f30%2fa-plain-markdown-post%2f&text=A%20Plain%20Markdown%20Post&tw_p=tweetbutton" onclick="window.open(this.href, 'PCwindow', 'width=550, height=350, menubar=no, toolbar=no, scrollbars=yes'); return false;"><i class="fa fa-twitter"></i></a>
+  <a href="https://plus.google.com/share?url=%2f2016%2f12%2f30%2fa-plain-markdown-post%2f" onclick="window.open(this.href, 'PCwindow', 'width=550, height=350, menubar=no, toolbar=no, scrollbars=yes'); return false;"><i class="fa fa-google-plus"></i></a>
+  <a href="http://getpocket.com/edit?url=%2f2016%2f12%2f30%2fa-plain-markdown-post%2f&title=A%20Plain%20Markdown%20Post" onclick="window.open(this.href, 'PCwindow', 'width=550, height=350, menubar=no, toolbar=no, scrollbars=yes'); return false;"><i class="fa fa-get-pocket"></i></a>
+</div>
+
+<div class="post-meta-code">
+  <div class="desc">
+    public string description() {
+    <div class="desc">val author = "
+    
+        <a href="mailto:"></a>
+    ";
+    </div>
+    
+    }
+  </div>
+</div>
+<div class="post-meta-code">
+  <div class="desc">
+    public string tags() {
+      <div class="desc">
+        val tags = [
+        
+        ];
+      </div>
+    }
+  </div>
+</div>
+
+  <div class="seperator">
+    <img src="/images/seperator.png" />
+  </div>
+
+  <a href="/about/">
+  <div class="post-title">
+    <img src="/images/post-title-icon.png" />
+    <div class="post-meta">
+      <time>05 May 2016, 21:48</time>
+      <h1>About</h1>
+    </div>
+  </div>
+</a>
+
+<div class="post-toc">
+  <span class="title">
+    Table of contents
+  </span>
+  
+</div>
+
+<section class="post-content">
+  <p>This is a &ldquo;hello world&rdquo; example website for the <a href="https://github.com/rstudio/blogdown"><strong>blogdown</strong></a> package. The theme was forked from <a href="https://github.com/jrutheiser/hugo-lithium-theme">@jrutheiser/hugo-lithium-theme</a> and modified by <a href="https://github.com/yihui/hugo-lithium-theme">Yihui Xie</a>.</p>
+
+</section>
+
+<div class="share">
+  <a href="http://www.facebook.com/sharer.php?src=bm&u=%2fabout%2f&t=About" onclick="window.open(this.href, 'PCwindow', 'width=550, height=350, menubar=no, toolbar=no, scrollbars=yes'); return false;"><i class="fa fa-facebook"></i></a>
+  <a href="http://twitter.com/intent/tweet?url=%2fabout%2f&text=About&tw_p=tweetbutton" onclick="window.open(this.href, 'PCwindow', 'width=550, height=350, menubar=no, toolbar=no, scrollbars=yes'); return false;"><i class="fa fa-twitter"></i></a>
+  <a href="https://plus.google.com/share?url=%2fabout%2f" onclick="window.open(this.href, 'PCwindow', 'width=550, height=350, menubar=no, toolbar=no, scrollbars=yes'); return false;"><i class="fa fa-google-plus"></i></a>
+  <a href="http://getpocket.com/edit?url=%2fabout%2f&title=About" onclick="window.open(this.href, 'PCwindow', 'width=550, height=350, menubar=no, toolbar=no, scrollbars=yes'); return false;"><i class="fa fa-get-pocket"></i></a>
+</div>
+
+<div class="post-meta-code">
+  <div class="desc">
+    public string description() {
+    <div class="desc">val author = "
+    
+        <a href="mailto:"></a>
+    ";
+    </div>
+    
+    }
+  </div>
+</div>
+<div class="post-meta-code">
+  <div class="desc">
+    public string tags() {
+      <div class="desc">
+        val tags = [
+        
+        ];
+      </div>
+    }
+  </div>
+</div>
+
+  <div class="seperator">
+    <img src="/images/seperator.png" />
+  </div>
+
+  <a href="/2015/07/23/hello-r-markdown/">
+  <div class="post-title">
+    <img src="/images/post-title-icon.png" />
+    <div class="post-meta">
+      <time>23 Jul 2015, 21:13</time>
+      <h1>Hello R Markdown</h1>
+    </div>
+  </div>
+</a>
+
+<div class="post-toc">
+  <span class="title">
+    Table of contents
+  </span>
+  
+</div>
+
+<section class="post-content">
+  <div id="r-markdown" class="section level1">
+<h1>R Markdown</h1>
+<p>This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <a href="http://rmarkdown.rstudio.com" class="uri">http://rmarkdown.rstudio.com</a>.</p>
+<p>You can embed an R code chunk like this:</p>
+<pre class="r"><code>summary(cars)
+##      speed           dist       
+##  Min.   : 4.0   Min.   :  2.00  
+##  1st Qu.:12.0   1st Qu.: 26.00  
+##  Median :15.0   Median : 36.00  
+##  Mean   :15.4   Mean   : 42.98  
+##  3rd Qu.:19.0   3rd Qu.: 56.00  
+##  Max.   :25.0   Max.   :120.00
+fit &lt;- lm(dist ~ speed, data = cars)
+fit
+## 
+## Call:
+## lm(formula = dist ~ speed, data = cars)
+## 
+## Coefficients:
+## (Intercept)        speed  
+##     -17.579        3.932</code></pre>
+</div>
+<div id="including-plots" class="section level1">
+<h1>Including Plots</h1>
+<p>You can also embed plots. See Figure <a href="#fig:pie">1</a> for example:</p>
+<pre class="r"><code>par(mar = c(0, 1, 0, 1))
+pie(
+  c(280, 60, 20),
+  c(&#39;Sky&#39;, &#39;Sunny side of pyramid&#39;, &#39;Shady side of pyramid&#39;),
+  col = c(&#39;#0292D8&#39;, &#39;#F7EA39&#39;, &#39;#C4B632&#39;),
+  init.angle = -50, border = NA
+)</code></pre>
+<div class="figure"><span id="fig:pie"></span>
+<img src="/post/2015-07-23-r-rmarkdown_files/figure-html/pie-1.png" alt="A fancy pie chart." width="672" />
+<p class="caption">
+Figure 1: A fancy pie chart.
+</p>
+</div>
+</div>
+
+</section>
+
+<div class="share">
+  <a href="http://www.facebook.com/sharer.php?src=bm&u=%2f2015%2f07%2f23%2fhello-r-markdown%2f&t=Hello%20R%20Markdown" onclick="window.open(this.href, 'PCwindow', 'width=550, height=350, menubar=no, toolbar=no, scrollbars=yes'); return false;"><i class="fa fa-facebook"></i></a>
+  <a href="http://twitter.com/intent/tweet?url=%2f2015%2f07%2f23%2fhello-r-markdown%2f&text=Hello%20R%20Markdown&tw_p=tweetbutton" onclick="window.open(this.href, 'PCwindow', 'width=550, height=350, menubar=no, toolbar=no, scrollbars=yes'); return false;"><i class="fa fa-twitter"></i></a>
+  <a href="https://plus.google.com/share?url=%2f2015%2f07%2f23%2fhello-r-markdown%2f" onclick="window.open(this.href, 'PCwindow', 'width=550, height=350, menubar=no, toolbar=no, scrollbars=yes'); return false;"><i class="fa fa-google-plus"></i></a>
+  <a href="http://getpocket.com/edit?url=%2f2015%2f07%2f23%2fhello-r-markdown%2f&title=Hello%20R%20Markdown" onclick="window.open(this.href, 'PCwindow', 'width=550, height=350, menubar=no, toolbar=no, scrollbars=yes'); return false;"><i class="fa fa-get-pocket"></i></a>
+</div>
+
+<div class="post-meta-code">
+  <div class="desc">
+    public string description() {
+    <div class="desc">val author = "
+    
+        Frida Gomam
+    ";
+    </div>
+    
+    <div class="desc">
+      val categories = [
+      
+      
+      <a href="//categories/r">"R"</a>
+      
+      ];
+    </div>
+    
+    }
+  </div>
+</div>
+<div class="post-meta-code">
+  <div class="desc">
+    public string tags() {
+      <div class="desc">
+        val tags = [
+        
+          
+          <a href="/tags/r-markdown">"R Markdown"</a>
+          
+          <a href="/tags/plot">"plot"</a>
+          
+          <a href="/tags/regression">"regression"</a>
+          
+        
+        ];
+      </div>
+    }
+  </div>
+</div>
+
+  <div class="seperator">
+    <img src="/images/seperator.png" />
+  </div>
+
+  <a href="/2015/07/23/dr.-patternmatch-or-how-i-learned-to-stop-worrying-and-love-regular-expressions/">
+  <div class="post-title">
+    <img src="/images/post-title-icon.png" />
+    <div class="post-meta">
+      <time>23 Jul 2015, 00:00</time>
+      <h1>Dr. PatternMatch or: How I Learned to Stop Worrying and Love Regular Expressions</h1>
+    </div>
+  </div>
+</a>
+
+<div class="post-toc">
+  <span class="title">
+    Table of contents
+  </span>
+  
+</div>
+
+<section class="post-content">
+  <div id="introduction" class="section level2">
+<h2>INTRODUCTION</h2>
+<p>In my discussions with other data-scientists about their usage of Regular Expressions (RegEx for short) I have found that a large number adopt the search stack-overflow for the right one methodology. It’s understandable: RegEx syntax is finicky and theres a knowledge threshold which takes effort to break through before the investment in RegEx starts pay off. Theres an infamous quote/joke on the topic:</p>
+<blockquote>
+<p>Some people, when confronted with a problem, think “I know, I’ll use regular expressions.” Now they have two problems.</p>
+</blockquote>
+<p>Without picking apart a joke too much I prefer to see it as:</p>
+<blockquote>
+<p>Some people, when confronted with a problem, think “I know, I’ll use regular expressions.” Now they have a problem and a puzzle.</p>
+</blockquote>
+<p>Puzzles are more fun than problems, right? I genuinely enjoy it when I have a need to use Regular Expressions in my work. Theres a sense of expression (excuse the pun) in writing the right RegEx for the job.</p>
+<p>Its useful to think of RegEx as an engine that you can bolt onto the workflow you already employ. Different platforms interact differently with the engine and also have their own syntax. In the introduction I shall keep the syntax environment-agnostic but later I will be giving examples in the R environment and hence will discuss the R flavour of RegEx.</p>
+<p>For the sake of brevity this post this post aims to give only a basics (and not exhaustive) introduction to Regular Expressions: covering the most important concepts. Along the way we’ll look at some fun use-cases and hopefully some readers will be inspired to use them in their own text-processing workflows. Lets dive in.</p>
+</div>
+<div id="the-basis-for-regular-expressions" class="section level2">
+<h2>THE BASIS FOR REGULAR EXPRESSIONS</h2>
+<p>Humans are adept at noticing patterns in many walks of life with text strings being no exception. For instance the telephone numbers</p>
+<ul>
+<li>01632123456</li>
+<li>01632 123456</li>
+<li>(0163) 212 3456</li>
+<li>(01632) 123-456</li>
+</ul>
+<p>read by a human are all easily parsed and understood to be the same number. However to a computer these strings are all unique. Imagine a scenario in which we are asked to process a stack of emails containing phone numbers with no standardised format. Wouldnt it be great if a computer, which can parse the text much faster than a human, could <em>see</em> the numbers the same way we do - as a pattern.</p>
+<p>RegEx formalise the concept of a text pattern. Using RegEx in a data-wrangling workflow is very powerful as pattern detection, extraction, and replacement are common tasks a data scientist will be faced with.</p>
+<div id="the-anatomy-of-a-pattern" class="section level3">
+<h3>The Anatomy of a Pattern</h3>
+<p>Before looking at how to express string-patterns in RegEx lets cover what a pattern is. Patterns are small pieces of strings and strings are ordered sequences of characters:</p>
+</div>
+</div>
+<div id="put-figure-ere" class="section level1">
+<h1>PUT FIGURE ’ERE</h1>
+<p>As far as a computers are concerned all characters are unique and are not categorised into larger groups or classes. Whereas when humans parse strings the characters tend to have classes; numbers are different to letters, punctuation is different to alphanumerics, whitespace and formatting characters are different to all the above.</p>
+<p>If we consider these character groups to be atoms then examples of molecules might be:</p>
+<ul>
+<li>Words : collections of letters, no numbers, no white-space, restricted punctuation (``).</li>
+<li>Numbers : collections of numbers, no letters, no white-space, restricted punctuation (<code>,</code> or <code>.</code>).</li>
+<li>Telephone Numbers : collections of numbers, no letters, no white-space, restricted punctuation (<code>,</code>, <code>+</code>, <code>(</code>, <code>)</code>, <code>-</code>, <code>.</code>).</li>
+<li>Web URL: collections of letters, numbers, restricted punctuation (<code>$</code>, <code>-</code>, <code>_</code>, <code>.</code>, <code>+</code>, <code>!</code>, <code>*</code>, <code>'</code>, <code>(</code>, <code>)</code>, <code>,</code>, <code>\</code>, <code>?</code>), no whitespace.</li>
+</ul>
+<p>This may seem remedial but the first step to forming good RegEx is to understand the restrictions to the molecules you are attempting to match: notice in the examples I was strict enough to not only list the allowed characters but also the disallowed characters.</p>
+<div id="regex-101" class="section level3">
+<h3>RegEx 101</h3>
+<p>Lets cover how RegEx defines and matches patterns. This section is very bookwork-y however its important so please bare with it - itll be worth it!</p>
+<p>A regular expression is itself a string. The RegEx string is comprised of two component characters: literal and metacharacters. Literal characters represent literally the character the RegEx aims to match: <code>a</code> matches <code>a</code>.</p>
+<p>Metacharacters have special meanings which enrich the pattern. Typically a metacharacter changes the meaning of the previous or next character (or pattern chunk) in the RegEx. Metacharacters can and often do apply to other metacharacters. Broadly, metacharacters are used for four pattern matching tasks.</p>
+<ol style="list-style-type: decimal">
+<li>Character Classes</li>
+<li>Quantifiers</li>
+<li>Alternation</li>
+<li>Anchors</li>
+</ol>
+<div id="character-classes" class="section level4">
+<h4>Character Classes</h4>
+<p>Previously we touched on the concept of character classes as the atoms of larger patterns. RegEx has some built in character classes plus the ability to define custom classes. The broadest character class is invoked via the wildcard metacharacter, <code>.</code>, which matches anything, literally <strong>anything</strong>. This is useful for many reasons but usually within the context of more complicated patterns involving other metacharacters which havent been covered yet, well see more of <code>.</code> later.</p>
+<p>Two useful character classes are those for whitespace and digits, which are <code>\s</code> and <code>\d</code> respectively. Meaning <code>\d</code> will match any single digit 0-9 and <code>\s</code> will match a single space or tab character.</p>
+<p>RegEx also allows you to express custom character classes using square brackets. Characters inside the square brackets will be matched. Also ranges can be defined with a hyphen. For instance <code>[0-9a-f][0-9a-f]</code> will match any double digit hexadecimal number. A negated character class can also be defined by starting the class inside the brackets with a carat symbol <code>^</code>. So <code>[^1-3]</code> reads `match any character other than 1, 2, or 3’.</p>
+</div>
+<div id="quantifiers" class="section level4">
+<h4>Quantifiers</h4>
+<p>Quantifiers allow the RegEx to match on differing numbers of a chunk of a pattern. The metacharacters used for this are shown in the following table.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Metacharacter</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">*</td>
+<td>0 or more of preceding item</td>
+</tr>
+<tr class="even">
+<td align="center">+</td>
+<td>1 or more of preceding item</td>
+</tr>
+<tr class="odd">
+<td align="center">?</td>
+<td>0 or 1 of preceding item</td>
+</tr>
+<tr class="even">
+<td align="center">{n,m}</td>
+<td>n to m of preceding item</td>
+</tr>
+</tbody>
+</table>
+<p>The <code>?</code> quantifier can be thought of intuitively as “match this pattern with or without this item”, for instance if you wished to match both the words <code>colour</code> and <code>color</code> the RegEx <code>colou?r</code> would do this.</p>
+<p>An instance where the <code>+</code> metacharacter would be useful is in a pattern-replacement workflow to catch multiple space characters and replace with a single space. The pattern <code>\s+</code> would match one or more whitespace characters in a row allowing you to replace them all with a single space.</p>
+<p>The curly brackets allow for custom quantifiers: above I showed the RegEx <code>[0-9a-f][0-9a-f]</code> to match two digit hexadecimal numbers. This has an obvious duplication issue and could be re-written more succinctly with quantifiers as: <code>[0-9a-f]{2}</code>. Notice that I dont have to supply both an upper and lower limit as shown in the table. Also, adding a comma before or after the 2 without giving another value would change the meaning again to match from 0 to 2 and match from 2 to infinity respectively.</p>
+</div>
+<div id="alternation" class="section level4">
+<h4>Alternation</h4>
+<p>Alternation allows the RegEx to match on multiple subexpressions and the metacharacter used for this is the pipe <code>|</code>. For instance the RegEx <code>this|that</code> would match either <code>this</code> or <code>that</code>. The pipe reaches out to the nearest grouping and groupings can be defined with parentheses. So the previous RegEx is equivalently written as <code>th(is|at)</code> where now the pattern reads ‘match <code>th</code> followed by either <code>is</code> or <code>at</code>’.</p>
+<p>Most patterns can be written in multiple ways and personal style starts to come into play. Usually the shorter the expression the harder it can be to understand what it is matching (not that that stops people competing in RegEx golf of course), I tend to go for a compromise between total RegEx length and readability.</p>
+<p>Parentheses were used above to denote a grouping which is one purpose of them, but they also allow for capturing. Capturing is a construct in RegEx where patterns set inside parentheses are matched and those matches are captured to be recalled later. Well cover more in depth later.</p>
+</div>
+<div id="anchors" class="section level4">
+<h4>Anchors</h4>
+<p>So far we have looked at simple examples where the pattern matches the whole string. Recall in the diagram above that patterns in general sit somewhere along a longer string. RegEx has metacharacters called anchors which force the pattern to match between a place in the string.</p>
+<p>Depending on how the RegEx engine is being invoked this has a variety of uses. There’s a so-called option for RegEx engines called global which means that the pattern <em>slides</em> over the whole string and can return either <code>TRUE/FALSE</code> for match or not. If preffered the engine could also return the character locations for each match. In this scenario it becomes more important that the RegEx care about anchoring. For instance our Regex above for <code>this</code> or <code>that</code> would also match on <code>unsympathised</code> and all other words which contain <code>this</code> or <code>that</code>.</p>
+<p>To fix the above we can anchor to the start and end of the entire string with <code>^</code> and <code>$</code>. So, Modifying the RegEx above to <code>^th(is|at)$</code> would now match only the full strings <code>this</code> or <code>that</code>. At this stage hopefully some of you are asking ‘hey, isn’t <code>^</code> already used for negated character classes?’ - and you’d be right. Somewhat confusingly metacharacters have multiple contextual meanings in RegEx and this one of them.</p>
+<p>The other important anchor is the would boundary anchor <code>\b</code>. This makes it easier to do per-word style matching on long strings. For instance the RegEx <code>\bat\b</code> will match (with the global option on) on the string <code>the shop closed at 9pm</code> but not <code>the cat sat on the matt</code></p>
+</div>
+<div id="the-great-escape" class="section level4">
+<h4>The Great Escape</h4>
+</div>
+</div>
+</div>
+
+</section>
+
+<div class="share">
+  <a href="http://www.facebook.com/sharer.php?src=bm&u=%2f2015%2f07%2f23%2fdr.-patternmatch-or-how-i-learned-to-stop-worrying-and-love-regular-expressions%2f&t=Dr.%20PatternMatch%20or%3a%20How%20I%20Learned%20to%20Stop%20Worrying%20and%20Love%20Regular%20Expressions" onclick="window.open(this.href, 'PCwindow', 'width=550, height=350, menubar=no, toolbar=no, scrollbars=yes'); return false;"><i class="fa fa-facebook"></i></a>
+  <a href="http://twitter.com/intent/tweet?url=%2f2015%2f07%2f23%2fdr.-patternmatch-or-how-i-learned-to-stop-worrying-and-love-regular-expressions%2f&text=Dr.%20PatternMatch%20or%3a%20How%20I%20Learned%20to%20Stop%20Worrying%20and%20Love%20Regular%20Expressions&tw_p=tweetbutton" onclick="window.open(this.href, 'PCwindow', 'width=550, height=350, menubar=no, toolbar=no, scrollbars=yes'); return false;"><i class="fa fa-twitter"></i></a>
+  <a href="https://plus.google.com/share?url=%2f2015%2f07%2f23%2fdr.-patternmatch-or-how-i-learned-to-stop-worrying-and-love-regular-expressions%2f" onclick="window.open(this.href, 'PCwindow', 'width=550, height=350, menubar=no, toolbar=no, scrollbars=yes'); return false;"><i class="fa fa-google-plus"></i></a>
+  <a href="http://getpocket.com/edit?url=%2f2015%2f07%2f23%2fdr.-patternmatch-or-how-i-learned-to-stop-worrying-and-love-regular-expressions%2f&title=Dr.%20PatternMatch%20or%3a%20How%20I%20Learned%20to%20Stop%20Worrying%20and%20Love%20Regular%20Expressions" onclick="window.open(this.href, 'PCwindow', 'width=550, height=350, menubar=no, toolbar=no, scrollbars=yes'); return false;"><i class="fa fa-get-pocket"></i></a>
+</div>
+
+<div class="post-meta-code">
+  <div class="desc">
+    public string description() {
+    <div class="desc">val author = "
+    
+        Nick Howlett
+    ";
+    </div>
+    
+    <div class="desc">
+      val categories = [
+      
+      
+      <a href="//categories/r">"R"</a>
+      
+      ];
+    </div>
+    
+    }
+  </div>
+</div>
+<div class="post-meta-code">
+  <div class="desc">
+    public string tags() {
+      <div class="desc">
+        val tags = [
+        
+          
+          <a href="/tags/regular-expressions">"Regular Expressions"</a>
+          
+        
+        ];
+      </div>
+    }
+  </div>
+</div>
+
+  <div class="seperator">
+    <img src="/images/seperator.png" />
+  </div>
+
+  <a href="/2015/01/01/lorem-ipsum/">
+  <div class="post-title">
+    <img src="/images/post-title-icon.png" />
+    <div class="post-meta">
+      <time>01 Jan 2015, 13:09</time>
+      <h1>Lorem Ipsum</h1>
+    </div>
+  </div>
+</a>
+
+<div class="post-toc">
+  <span class="title">
+    Table of contents
+  </span>
+  
+</div>
+
+<section class="post-content">
+  <p><strong>Lorem ipsum</strong> dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore <em>magna aliqua</em>. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+</section>
+
+<div class="share">
+  <a href="http://www.facebook.com/sharer.php?src=bm&u=%2f2015%2f01%2f01%2florem-ipsum%2f&t=Lorem%20Ipsum" onclick="window.open(this.href, 'PCwindow', 'width=550, height=350, menubar=no, toolbar=no, scrollbars=yes'); return false;"><i class="fa fa-facebook"></i></a>
+  <a href="http://twitter.com/intent/tweet?url=%2f2015%2f01%2f01%2florem-ipsum%2f&text=Lorem%20Ipsum&tw_p=tweetbutton" onclick="window.open(this.href, 'PCwindow', 'width=550, height=350, menubar=no, toolbar=no, scrollbars=yes'); return false;"><i class="fa fa-twitter"></i></a>
+  <a href="https://plus.google.com/share?url=%2f2015%2f01%2f01%2florem-ipsum%2f" onclick="window.open(this.href, 'PCwindow', 'width=550, height=350, menubar=no, toolbar=no, scrollbars=yes'); return false;"><i class="fa fa-google-plus"></i></a>
+  <a href="http://getpocket.com/edit?url=%2f2015%2f01%2f01%2florem-ipsum%2f&title=Lorem%20Ipsum" onclick="window.open(this.href, 'PCwindow', 'width=550, height=350, menubar=no, toolbar=no, scrollbars=yes'); return false;"><i class="fa fa-get-pocket"></i></a>
+</div>
+
+<div class="post-meta-code">
+  <div class="desc">
+    public string description() {
+    <div class="desc">val author = "
+    
+        <a href="mailto:"></a>
+    ";
+    </div>
+    
+    }
+  </div>
+</div>
+<div class="post-meta-code">
+  <div class="desc">
+    public string tags() {
+      <div class="desc">
+        val tags = [
+        
+        ];
+      </div>
+    }
+  </div>
+</div>
+
+  <div class="seperator">
+    <img src="/images/seperator.png" />
+  </div>
+
+
+<div class="paging">
+  
+
+  PAGE 1 / 1
+
+  
+</div>
+
+<footer class="footer">
+    COPYRIGHT (C) <a href="http://blog.lulab.net">DONGGEUN,BANG</a>. ALL RIGHTS RESERVED.
+</footer>
+
+
+
+</body>
+
+</html>
+
