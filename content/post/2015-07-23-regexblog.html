@@ -43,10 +43,10 @@ tags: ["Regular Expressions"]
 <p>As far as a computers are concerned all characters are unique and are not categorised into larger groups or classes. Whereas when humans parse strings the characters tend to have classes; numbers are different to letters, punctuation is different to alphanumerics, whitespace and formatting characters are different to all the above.</p>
 <p>If we consider these character groups to be atoms then examples of molecules might be:</p>
 <ul>
-<li>Words : collections of letters, no numbers, no white-space, restricted punctuation (``).</li>
+<li>Words : collections of letters, no numbers, no white-space, restricted punctuation (<code>'</code>, <code>-'</code>).</li>
 <li>Numbers : collections of numbers, no letters, no white-space, restricted punctuation (<code>,</code> or <code>.</code>).</li>
 <li>Telephone Numbers : collections of numbers, no letters, no white-space, restricted punctuation (<code>,</code>, <code>+</code>, <code>(</code>, <code>)</code>, <code>-</code>, <code>.</code>).</li>
-<li>Web URL: collections of letters, numbers, restricted punctuation (<code>$</code>, <code>-</code>, <code>_</code>, <code>.</code>, <code>+</code>, <code>!</code>, <code>*</code>, <code>'</code>, <code>(</code>, <code>)</code>, <code>,</code>, <code>\</code>, <code>?</code>), no whitespace.</li>
+<li>Web URL: collections of letters, numbers, restricted punctuation <nobr>(<code>$</code>, <code>-</code>, <code>_</code>, <code>.</code>, <code>+</code>, <code>!</code>, <code>*</code>, <code>'</code>, <code>(</code>, <code>)</code>, <code>,</code>, <code>\</code>, <code>?</code>)</nobr>, no whitespace.</li>
 </ul>
 <p>This may seem remedial but the first step to forming good RegEx is to understand the restrictions to the molecules you are attempting to match: notice in the examples I was strict enough to not only list the allowed characters but also the disallowed characters.</p>
 <div id="regex-101" class="section level3">
@@ -110,10 +110,11 @@ tags: ["Regular Expressions"]
 <p>So far we have looked at simple examples where the pattern matches the whole string. Recall in the diagram above that patterns in general sit somewhere along a longer string. RegEx has metacharacters called anchors which force the pattern to match between a place in the string.</p>
 <p>Depending on how the RegEx engine is being invoked this has a variety of uses. There’s a so-called option for RegEx engines called global which means that the pattern <em>slides</em> over the whole string and can return either <code>TRUE/FALSE</code> for match or not. If preffered the engine could also return the character locations for each match. In this scenario it becomes more important that the RegEx care about anchoring. For instance our Regex above for <code>this</code> or <code>that</code> would also match on <code>unsympathised</code> and all other words which contain <code>this</code> or <code>that</code>.</p>
 <p>To fix the above we can anchor to the start and end of the entire string with <code>^</code> and <code>$</code>. So, Modifying the RegEx above to <code>^th(is|at)$</code> would now match only the full strings <code>this</code> or <code>that</code>. At this stage hopefully some of you are asking ‘hey, isn’t <code>^</code> already used for negated character classes?’ - and you’d be right. Somewhat confusingly metacharacters have multiple contextual meanings in RegEx and this one of them.</p>
-<p>The other important anchor is the would boundary anchor <code>\b</code>. This makes it easier to do per-word style matching on long strings. For instance the RegEx <code>\bat\b</code> will match (with the global option on) on the string <code>the shop closed at 9pm</code> but not <code>the cat sat on the matt</code></p>
+<p>The other important anchor is the would boundary anchor <code>\b</code>. This makes it easier to do per-word style matching on long strings. For instance the RegEx <code>\bat\b</code> will match (with the global option on) on the string <code>the shop closed at 9pm</code> but not <code>the cat sat on the matt</code>.</p>
 </div>
 <div id="the-great-escape" class="section level4">
 <h4>The Great Escape</h4>
+<p>Of course sometimes you want a character which is used as a metacharacter</p>
 </div>
 </div>
 </div>

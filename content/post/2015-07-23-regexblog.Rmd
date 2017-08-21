@@ -54,10 +54,10 @@ As far as a computers are concerned all characters are unique and are not catego
 
 If we consider these character groups to be atoms then examples of molecules might be:
 
-* Words : collections of letters, no numbers, no white-space, restricted punctuation (``).
+* Words : collections of letters, no numbers, no white-space, restricted punctuation (`'`, `-'`).
 * Numbers : collections of numbers, no letters, no white-space, restricted punctuation (`,` or `.`).
 * Telephone Numbers : collections of numbers, no letters, no white-space, restricted punctuation (`,`, `+`, `(`, `)`, `-`, `.`).
-* Web URL: collections of letters, numbers, restricted punctuation (`$`, `-`, `_`, `.`, `+`, `!`, `*`, `'`, `(`, `)`, `,`, `\`, `?`), no whitespace.
+* Web URL: collections of letters, numbers, restricted punctuation <nobr>(`$`, `-`, `_`, `.`, `+`, `!`, `*`, `'`, `(`, `)`, `,`, `\`, `?`)</nobr>, no whitespace.
 
 
 This may seem remedial but the first step to forming good RegEx is to understand the restrictions to the molecules you are attempting to match: notice in the examples I was strict enough to not only list the allowed characters but also the disallowed characters.
@@ -123,7 +123,10 @@ Depending on how the RegEx engine is being invoked this has a variety of uses. T
 
 To fix the above we can anchor to the start and end of the entire string with `^` and `$`. So, Modifying the RegEx above to `^th(is|at)$` would now match only the full strings `this` or `that`. At this stage hopefully some of you are asking 'hey, isn't `^` already used for negated character classes?' - and you'd be right. Somewhat confusingly metacharacters have multiple contextual meanings in RegEx and this one of them.
 
-The other important anchor is the would boundary anchor `\b`. This makes it easier to do per-word style matching on long strings. For instance the RegEx `\bat\b` will match (with the global option on) on the string `the shop closed at 9pm` but not `the cat sat on the matt` 
+The other important anchor is the would boundary anchor `\b`. This makes it easier to do per-word style matching on long strings. For instance the RegEx `\bat\b` will match (with the global option on) on the string `the shop closed at 9pm` but not `the cat sat on the matt`. 
 
 
 #### The Great Escape
+
+Of course sometimes you want a character which is used as a metacharacter
+
